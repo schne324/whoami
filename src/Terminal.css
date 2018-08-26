@@ -1,0 +1,33 @@
+.terminal {
+  font-family: 'Source Code Pro', monospace;
+  padding: 8px;
+  height: 480px;
+  background: #000;
+  color: #fff;
+  opacity: 0.8;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border-bottom-left-radius: 5px;
+  overflow-y: auto;
+}
+
+.terminal::after {
+  content: "|";
+  animation: blink 2s steps(1) infinite;
+}
+
+.cli {
+  display: flex;
+}
+
+.prompt {
+  color: rgb(189, 227, 113);
+}
+
+.path {
+  color: rgb(94, 215, 255);
+  margin: 0 4px;
+}
+
+@keyframes blink { 50% { color: transparent; } }
