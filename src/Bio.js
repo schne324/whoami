@@ -56,6 +56,15 @@ export default function Bio() {
             me@harris-schneiderman.com
           </a>
         </li>
+        <li>
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://harris-schneiderman.com/Resume.pdf'
+          >
+            resume
+          </a>
+        </li>
       </ul>
     </div>
   )
