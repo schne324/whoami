@@ -9,7 +9,7 @@ export default function Handle() {
         <div className='minimize' />
         <div className='maximize' />
       </div>
-      <span className='title'>harris@mpb: ~ (zsh)</span>
+      <span className='title'>harris@mbp: ~ (zsh)</span>
     </div>
   );
 }
