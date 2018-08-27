@@ -10,11 +10,8 @@
   word-wrap: break-word;
   border-bottom-left-radius: 5px;
   overflow-y: auto;
-}
-
-.terminal::after {
-  content: "|";
-  animation: blink 2s steps(1) infinite;
+  margin-bottom: 50px;
+  animate: 1s fadein;
 }
 
 .cli {
@@ -29,5 +26,3 @@
   color: rgb(94, 215, 255);
   margin: 0 4px;
 }
-
-@keyframes blink { 50% { color: transparent; } }

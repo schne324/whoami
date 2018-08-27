@@ -1,0 +1,15 @@
+.hide-cursor .typed-cursor {
+  display: none;
+}
+
+.bio h2, .bio h3 {
+  margin: 5px 0;
+}
+
+.bio ul {
+  margin: 5px 0;
+}
+
+.links a {
+  color: #fff;
+}

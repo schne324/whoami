@@ -1,6 +1,7 @@
 main {
   background-image: radial-gradient(top, circle cover, #00d2ff 0%, #3a7bd5 80%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -10,4 +11,26 @@ main {
   width: 85%;
   max-width: 680px;
   position: relative;
+}
+
+.who {
+  text-align: center;
+  animation: 2s fadein;
+}
+
+.who img {
+  width: 150px;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #000;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
