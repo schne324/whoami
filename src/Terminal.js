@@ -4,7 +4,7 @@ import Bio from './Bio';
 import './Terminal.css';
 
 export default class Terminal extends Component {
-  state = { showBio: false }
+  state = { showBio: false, date: new Date() }
   componentDidMount() {
     setTimeout(() => {
       this.typed = new Typed(this.typedTarget, {
@@ -22,17 +22,16 @@ export default class Terminal extends Component {
   }
 
   render() {
-    const { showBio } = this.state;
-    const d = new Date();
-    const hours = d.getHours();
-    const mins = d.getMinutes();
-    const secs = `${d.getSeconds()}`;
+    const { showBio, date } = this.state;
+    const hours = date.getHours();
+    const mins = date.getMinutes();
+    const secs = `${date.getSeconds()}`;
     const time = `${hours}:${mins}:${secs.length === 1 ? `0${secs}` : secs}`;
 
     return (
       <div className={`terminal ${showBio ? 'hide-cursor' : ''}`}>
         <div>
-          {`Last login: ${d.toDateString()} ${time} on console`}
+          {`Last login: ${date.toDateString()} ${time} on console`}
         </div>
         <div className='cli'>
           <div className='prompt'>➜</div>
