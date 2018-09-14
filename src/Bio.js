@@ -5,7 +5,7 @@ export default function Bio() {
   return (
     <div className='bio'>
       <h2>harris</h2>
-      <p>Hey, I am Harris and I am a web developer. I currently live in sunny San Diego, CA but originally come from East Lansing, Michigan (go state!).</p>
+      <p>Hey, I am Harris and I am a web developer. I currently live in sunny San Diego, CA but originally come from East Lansing, Michigan (go state!).  I work for Deque Systems and am also a member of the w3 ARIA Working Group.</p>
       <h3>Stuff I do with my free time:</h3>
       <ul>
         <li>listening / making / witnessing music</li>
