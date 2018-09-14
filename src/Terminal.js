@@ -29,7 +29,11 @@ export default class Terminal extends Component {
     const time = `${hours}:${mins}:${secs.length === 1 ? `0${secs}` : secs}`;
 
     return (
-      <div className={`terminal ${showBio ? 'hide-cursor' : ''}`}>
+      <div
+        className={`terminal ${showBio ? 'hide-cursor' : ''}`}
+        tabIndex={0}
+        aria-label='Scrollable readonly shell'
+      >
         <div>
           {`Last login: ${date.toDateString()} ${time} on console`}
         </div>
