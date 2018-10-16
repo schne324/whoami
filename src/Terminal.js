@@ -29,10 +29,11 @@ export default class Terminal extends Component {
         return new Promise(resolve => {
           this.giphy.random({
             tag: rest.join(' ') || 'bears'
-          }, (err, { data }) => {
-            const { title, image_original_url: url } = data;
+          }, (err, res = {}) => {
+            const { title, image_original_url: url } = (res.data || {});
 
             if (err || !url) {
+              console.error(err);
               return resolve({ output: '/giphy failed, try again?' });
             }
 
@@ -151,7 +152,7 @@ export default class Terminal extends Component {
       <div
         className={`terminal ${(showBio || cleared) ? 'hide-cursor' : ''}`}
         tabIndex={0}
-        aria-label='Scrollable readonly shell'
+        aria-label='Scrollable shell'
       >
         {!cleared && (
           <Fragment>

@@ -20,6 +20,10 @@
   display: block;
 }
 
+.terminal img.powered-by {
+  margin: 9px 0;
+}
+
 .terminal dt {
   font-weight: bold;
 }

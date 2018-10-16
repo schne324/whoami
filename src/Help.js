@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import poweredBy from './powered-by.png';
 
 export default function Help() {
   return (
@@ -7,7 +8,14 @@ export default function Help() {
         <dt>help</dt>
         <dd>show help</dd>
         <dt>{'/giphy [tag]'}</dt>
-        <dd>render a random gif based on provided tag</dd>
+        <dd>
+          <span>render a random gif based on provided tag</span>
+          <img
+            src={poweredBy}
+            alt='Powered by Giphy'
+            className='powered-by'
+          />
+        </dd>
         <dt>clear (or cmd+k)</dt>
         <dd>clear the console</dd>
         <dt>Say [words to say]</dt>
