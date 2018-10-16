@@ -14,6 +14,20 @@
   animate: 1s fadein;
 }
 
+.terminal img {
+  margin: 6px auto;
+  max-width: 60%;
+  display: block;
+}
+
+.terminal dt {
+  font-weight: bold;
+}
+
+.terminal dd {
+  font-style: italic;
+}
+
 .cli {
   display: flex;
 }
@@ -25,4 +39,17 @@
 .path {
   color: rgb(94, 215, 255);
   margin: 0 4px;
+}
+
+[type='text'] {
+  background: transparent;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  border: 0;
+  color: #fff;
+  width: 100%;
+}
+
+[type="text"]:focus {
+  outline: 0;
 }
