@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import Typed from 'typed.js';
-import Giphy from 'giphy';
 import Bio from './Bio';
 import CommandLine from './CommandLine';
 import Help from './Help';
-import { API_KEY } from './config';
 import './Terminal.css';
 
+const API_URL = 'https://5rfuy2c78j.execute-api.us-east-1.amazonaws.com/dev/random';
 const synth = window.speechSynthesis;
 const [ voice ] = Array.from(synth.getVoices());
 
@@ -20,67 +19,54 @@ export default class Terminal extends Component {
     cleared: false
   }
 
-  handleCommand = () => {
+  async handleCommand() {
     const { value } = this.input;
     const [ cmd, ...rest ] = value.split(' ');
 
     switch (cmd) {
       case '/giphy':
-        return new Promise(resolve => {
-          this.giphy.random({
-            tag: rest.join(' ') || 'bears'
-          }, (err, res = {}) => {
-            const { title, image_original_url: url } = (res.data || {});
+        const tag = rest.join(' ') || 'bears'
+        const res = await fetch(`${API_URL}?term=${encodeURIComponent(tag)}`);
 
-            if (err || !url) {
-              console.error(err);
-              return resolve({ output: '/giphy failed, try again?' });
-            }
+        if (!res.ok) {
+          return { output: '/giphy failed, try again?' };
+        }
 
-            resolve({
-              output: (
-                <img
-                  alt={title}
-                  src={url}
-                  onLoad={() => this.input.scrollIntoView()}
-                />
-              )
-            });
-          });
-        });
+        const { src, alt } = await res.json();
+        return {
+          output: (
+            <img
+              alt={alt}
+              src={src}
+              onLoad={() => this.input.scrollIntoView()}
+            />
+          )
+        };
 
       case 'help':
-        return Promise.resolve({
-          output: (<Help />)
-        });
+        return { output: (<Help />) };
       case 'clear':
-        return Promise.resolve({ clear: true });
+        return { clear: true };
       case 'echo':
-        return Promise.resolve({
-          output: rest.join(' ')
-        });
+        return { output: rest.join(' ') };
       case 'cd':
         const output = rest.length
           ? `cd: no such file or directory: ${rest[0]}`
           : 'it looks like you don\'t know how to use the command line...'
-        return Promise.resolve({ output });
+        return { output };
       case 'whoami':
-        return Promise.resolve({
-          output: 'idk'
-        });
+        return { output: 'idk' };
       case 'say':
         const utterance = new SpeechSynthesisUtterance(rest.join(' '));
         utterance.voice = voice;
         synth.speak(utterance);
-        return Promise.resolve({
-          output: ''
-        });
+        return { output: '' };
       case '':
-        return Promise.resolve({ output: '\n' });
+        return { output: '\n' };
       default:
-        return Promise.resolve({
+        return {
           output: `¯\\_(ツ)_/¯\ncommand not found: "${cmd}"`
-        });
+        };
     }
   };
 
@@ -133,8 +119,6 @@ export default class Terminal extends Component {
         }
       });
     }, 500);
-
-    this.giphy = new Giphy(API_KEY);
   }
 
   componentWillUnmount() {
